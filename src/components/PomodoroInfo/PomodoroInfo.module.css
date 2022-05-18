@@ -1,0 +1,103 @@
+.PomodoroInfo {
+   background-color: #fff;
+   padding: 2em 1em 1.6em 1em;
+}
+
+.wrapper {
+   max-width: 720px;
+   margin: 0 auto;
+}
+
+h1 {
+   font-size: 1.8em;
+   line-height: 1.4em;
+   font-weight: 700;
+   color: rgb(84, 28, 31);
+   margin-bottom: 1.2em;
+}
+
+.article:not(:last-child) {
+   margin-bottom: 1.6em;
+}
+
+.header {
+   position: relative;
+   font-size: 1.4em;
+   font-weight: 500;
+   color: rgb(84, 28, 31);
+   padding-bottom: 1.4em;
+}
+
+.header::after {
+   content: "";
+   display: block;
+   background-color: rgb(240, 91, 86);
+   width: 1.2em;
+   height: 0.14em;
+   position: absolute;
+   bottom: 40%;
+   left: 0;
+   opacity: 0.6;
+}
+
+.content {
+   line-height: 1.4em;
+   color: rgb(120, 94, 96);
+   white-space: pre-line;
+}
+
+.content a {
+   color: rgb(217, 85, 80);
+   text-decoration: none;
+}
+
+.sequencingList {
+   padding-left: 1.6em;
+   counter-reset: num;
+}
+
+.sequencingItem {
+   line-height: 1.6em;
+   padding: 0.4em 0;
+   position: relative;
+}
+
+.sequencingItem::before {
+   content: counter(num)'.';
+   counter-increment: num;
+   display: inline-block;
+   position: absolute;
+   left: -1.4em;
+   bottom: 50%;
+   transform: translateY(50%);
+   color: rgb(233, 109, 115);
+}
+
+.featureList {
+   padding-left: 1.6em;
+}
+
+.featureItem {
+   line-height: 1.6em;
+   padding: 0.4em 0;
+   position: relative;
+}
+
+.featureItem::before {
+   content: "";
+   display: block;
+   width: 6px;
+   height: 6px;
+   border-radius: 100%;
+   background-color: rgb(233, 109, 115);
+   position: absolute;
+   left: -1.2em;
+   bottom: 50%;
+   transform: translateY(50%);
+
+}
+
+.featureItem strong, .sequencingItem strong {
+   color: rgb(120, 94, 96);
+   font-weight: 500;
+}

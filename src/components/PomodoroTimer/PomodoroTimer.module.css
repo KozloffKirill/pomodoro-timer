@@ -1,4 +1,6 @@
-.PomodoroTimer {}
+.PomodoroTimer {
+   margin-bottom: 2.4em;
+}
 
 .wrapper {
    max-width: 620px;

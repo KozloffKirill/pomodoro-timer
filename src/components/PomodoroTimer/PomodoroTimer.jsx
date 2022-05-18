@@ -5,7 +5,7 @@ import Skip from "../../assets/img/skip.png";
 
 const PomodoroTimer = () => {
    const [seconds, setSeconds] = useState(0);
-   const [minutes, setMinutes] = useState(20);
+   const [minutes, setMinutes] = useState(25);
    const [isPaused, setIsPaused] = useState(true);
    const [mode, setMode] = useState(Mode.pomodoro);
    const [number, setNumber] = useState(1);
@@ -51,12 +51,12 @@ const PomodoroTimer = () => {
          case Mode.shortBreak:
             setMode(Mode.pomodoro);
             setSeconds(0);
-            setMinutes(20);
+            setMinutes(25);
             break;
          case Mode.longBreak:
             setMode(Mode.pomodoro);
             setSeconds(0);
-            setMinutes(20);
+            setMinutes(25);
             break;
          default:
             break;

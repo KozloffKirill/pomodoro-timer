@@ -6,7 +6,7 @@ const Header = ({ text }) => {
    return (
       <header className={styles.Header}>
          <div className={styles.wrapper}>
-            <h1 className={styles.name}>{text}</h1>
+            <p className={styles.name}>{text}</p>
          </div>
       </header>
    );

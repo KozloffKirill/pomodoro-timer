@@ -23,6 +23,7 @@ h1 {
 .header {
    position: relative;
    font-size: 1.4em;
+   line-height: 1.4em;
    font-weight: 500;
    color: rgb(84, 28, 31);
    padding-bottom: 1.4em;
@@ -35,7 +36,7 @@ h1 {
    width: 1.2em;
    height: 0.14em;
    position: absolute;
-   bottom: 40%;
+   bottom: 1.2em;
    left: 0;
    opacity: 0.6;
 }

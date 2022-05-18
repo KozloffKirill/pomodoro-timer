@@ -1,0 +1,41 @@
+.Footer {
+   border-top: 2px solid #efefef;
+   padding: 1.6em 0 1em;
+   background-color: #fff;
+}
+
+.wrapper {
+   max-width: 620px;
+   margin: 0 auto;
+   text-align: center;
+}
+
+.developer {
+   color: rgb(120, 94, 96);
+   margin-bottom: 1em;
+}
+
+.developer a {
+   color: rgb(217 85 80);
+   font-weight: 700;
+   text-decoration: none;
+}
+
+.links {
+   display: flex;
+   justify-content: center;
+}
+
+.links li:not(:last-child) {
+   margin-right: 1em;
+}
+
+.links a {
+   display: inline-block;
+   text-decoration: none;
+   transition: transform 0.6s linear;
+}
+
+.links a:hover {
+   transform: rotate(360deg);
+}

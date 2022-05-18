@@ -1,4 +1,5 @@
 import './App.css';
+import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import PomodoroInfo from './components/PomodoroInfo/PomodoroInfo';
 import PomodoroTimer from './components/PomodoroTimer/PomodoroTimer';
@@ -11,6 +12,7 @@ function App() {
         <PomodoroTimer />
         <PomodoroInfo />
       </main>
+      <Footer />
     </div>
   );
 }

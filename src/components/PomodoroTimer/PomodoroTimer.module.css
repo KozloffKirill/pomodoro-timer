@@ -1,9 +1,9 @@
 .PomodoroTimer {}
 
-.container {
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
+.wrapper {
+   max-width: 620px;
+   margin: 0 auto;
+   text-align: center;
 }
 
 .timer {
@@ -11,6 +11,7 @@
    padding: 1.6em 3.2em;
    border-radius: 0.4em;
    margin-bottom: 0.8em;
+   display: inline-block;
 }
 
 .time {
@@ -22,7 +23,6 @@
 
 .btnStart {
    transition: transform 0.1s linear, box-shadow 0.1s linear;
-   /*align-self: center;*/
    padding: 0.6em 0;
    width: 200px;
    background-color: #fff;
@@ -38,7 +38,6 @@
 
 .btnStop {
    transition: transform 0.1s linear, box-shadow 0.1s linear;
-   /*align-self: center;*/
    padding: 0.6em 0;
    width: 200px;
    background-color: #fff;
@@ -112,6 +111,5 @@
 }
 
 .pomodoroNumber {
-   text-align: center;
    opacity: 0.5;
 }

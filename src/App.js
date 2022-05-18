@@ -5,12 +5,10 @@ import PomodoroTimer from './components/PomodoroTimer/PomodoroTimer';
 function App() {
   return (
     <div className="App">
-      <div className='wrapper'>
-        <Header text="Pomodoro Timer" />
-        <main>
-          <PomodoroTimer minutes={20} seconds={15} />
-        </main>
-      </div>
+      <Header text="Pomodoro Timer" />
+      <main>
+        <PomodoroTimer />
+      </main>
     </div>
   );
 }

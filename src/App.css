@@ -8,14 +8,3 @@ body {
    color: #fff;
    background-color: rgb(217, 85, 80);
 }
-
-.wrapper {
-   max-width: 620px;
-   margin: 0 auto;
-}
-
-main {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-}

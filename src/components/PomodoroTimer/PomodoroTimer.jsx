@@ -4,8 +4,8 @@ import Mode from "../../models/mode.js";
 import Skip from "../../assets/img/skip.png";
 
 const PomodoroTimer = () => {
-   const [seconds, setSeconds] = useState(80);
-   const [minutes, setMinutes] = useState(1);
+   const [seconds, setSeconds] = useState(0);
+   const [minutes, setMinutes] = useState(20);
    const [isPaused, setIsPaused] = useState(true);
    const [mode, setMode] = useState(Mode.pomodoro);
    const [number, setNumber] = useState(1);
@@ -18,7 +18,7 @@ const PomodoroTimer = () => {
             if (seconds === 0) {
                if (minutes !== 0) {
                   setMinutes(minutes - 1);
-                  setSeconds(3);
+                  setSeconds(59);
                } else {
                   setIsPaused(true);
                   switchMode();
@@ -39,19 +39,24 @@ const PomodoroTimer = () => {
          case Mode.pomodoro:
             if (number % 4) {
                setMode(Mode.shortBreak);
+               setSeconds(0);
+               setMinutes(5);
             } else {
                setMode(Mode.longBreak);
+               setSeconds(0);
+               setMinutes(10);
             }
-            setSeconds(2);
             setNumber(number + 1);
             break;
          case Mode.shortBreak:
             setMode(Mode.pomodoro);
-            setSeconds(2);
+            setSeconds(0);
+            setMinutes(20);
             break;
          case Mode.longBreak:
             setMode(Mode.pomodoro);
-            setSeconds(2);
+            setSeconds(0);
+            setMinutes(20);
             break;
          default:
             break;
@@ -71,8 +76,8 @@ const PomodoroTimer = () => {
    const timerSeconds = seconds < 10 ? `0${seconds}` : seconds;
    return (
       <div className={styles.PomodoroTimer}>
-         <div className={styles.timer}>
-            <div className={styles.container}>
+         <div className={styles.wrapper}>
+            <div className={styles.timer}>
                <div className={styles.modes}>
                   <button className={mode === Mode.pomodoro ? styles.activeMode : undefined}>Pomodoro</button>
                   <button className={mode === Mode.shortBreak ? styles.activeMode : undefined}>Short Break</button>
@@ -97,8 +102,8 @@ const PomodoroTimer = () => {
                   </button>
                </div>
             </div>
+            <p className={styles.pomodoroNumber}>#{number}</p>
          </div>
-         <p className={styles.pomodoroNumber}>#{number}</p>
       </div>
    );
 };

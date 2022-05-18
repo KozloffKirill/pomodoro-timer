@@ -63,6 +63,27 @@ const PomodoroTimer = () => {
       }
    }
 
+   function handleSwitchModeClick(e, mode) {
+      setIsPaused(true);
+      setMode(mode);
+      switch (mode) {
+         case Mode.pomodoro:
+            setSeconds(0);
+            setMinutes(25);
+            break;
+         case Mode.shortBreak:
+            setSeconds(0);
+            setMinutes(5);
+            break;
+         case Mode.longBreak:
+            setSeconds(0);
+            setMinutes(10);
+            break;
+         default:
+            break;
+      }
+   }
+
    function handleStartClick(e) {
       setIsPaused(!isPaused);
    }
@@ -79,9 +100,24 @@ const PomodoroTimer = () => {
          <div className={styles.wrapper}>
             <div className={styles.timer}>
                <div className={styles.modes}>
-                  <button className={mode === Mode.pomodoro ? styles.activeMode : undefined}>Pomodoro</button>
-                  <button className={mode === Mode.shortBreak ? styles.activeMode : undefined}>Short Break</button>
-                  <button className={mode === Mode.longBreak ? styles.activeMode : undefined}>Long Break</button>
+                  <button
+                     className={mode === Mode.pomodoro ? styles.activeMode : undefined}
+                     onClick={(e) => handleSwitchModeClick(e, Mode.pomodoro)}
+                  >
+                     Pomodoro
+                  </button>
+                  <button
+                     className={mode === Mode.shortBreak ? styles.activeMode : undefined}
+                     onClick={(e) => handleSwitchModeClick(e, Mode.shortBreak)}
+                  >
+                     Short Break
+                  </button>
+                  <button
+                     className={mode === Mode.longBreak ? styles.activeMode : undefined}
+                     onClick={(e) => handleSwitchModeClick(e, Mode.longBreak)}
+                  >
+                     Long Break
+                  </button>
                </div>
                <div className={styles.time}>
                   {timerMinutes}:{timerSeconds}

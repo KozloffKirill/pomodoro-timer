@@ -10,6 +10,12 @@ body {
 }
 
 .wrapper {
-   max-width: 640px;
+   max-width: 620px;
    margin: 0 auto;
+}
+
+main {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 }

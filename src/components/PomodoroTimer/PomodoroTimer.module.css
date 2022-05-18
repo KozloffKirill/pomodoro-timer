@@ -1,0 +1,117 @@
+.PomodoroTimer {}
+
+.container {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+.timer {
+   background-color: rgba(255, 255, 255, 0.1);
+   padding: 1.6em 3.2em;
+   border-radius: 0.4em;
+   margin-bottom: 0.8em;
+}
+
+.time {
+   font-size: 7em;
+   font-weight: 700;
+   text-align: center;
+   margin-bottom: 0.2em;
+}
+
+.btnStart {
+   transition: transform 0.1s linear, box-shadow 0.1s linear;
+   /*align-self: center;*/
+   padding: 0.6em 0;
+   width: 200px;
+   background-color: #fff;
+   color: rgb(217, 85, 80);
+   border: none;
+   border-radius: 0.2em;
+   font-size: 1.2em;
+   text-transform: uppercase;
+   font-weight: 700;
+   font-family: inherit;
+   box-shadow: 0 0.4em rgb(235, 235, 235);
+}
+
+.btnStop {
+   transition: transform 0.1s linear, box-shadow 0.1s linear;
+   /*align-self: center;*/
+   padding: 0.6em 0;
+   width: 200px;
+   background-color: #fff;
+   color: rgb(217, 85, 80);
+   border: none;
+   border-radius: 0.2em;
+   font-size: 1.2em;
+   text-transform: uppercase;
+   font-weight: 700;
+   font-family: inherit;
+   box-shadow: none;
+   transform: translateY(0.4em);
+}
+
+.timerButtons {
+   text-align: center;
+   position: relative;
+}
+
+.btnSkip {
+   position: absolute;
+   top: calc(50% + 8.64px);
+   transform: translate(50%, -50%);
+   background-color: transparent;
+   width: 2em;
+   height: 2em;
+   border: none;
+   padding: 0;
+   text-align: center;
+   transition: opacity 0.2s linear;
+}
+
+.btnSkipTrans {
+   position: absolute;
+   top: calc(50% + 8.64px);
+   transform: translate(50%, -50%);
+   background-color: transparent;
+   width: 2em;
+   height: 2em;
+   border: none;
+   padding: 0;
+   text-align: center;
+   transition: opacity 0.2s linear;
+   pointer-events: none;
+   opacity: 0;
+}
+
+.btnSkip:hover {
+   opacity: 0.8;
+}
+
+.modes {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   margin-bottom: 0.8em;
+}
+
+.modes button {
+   border: none;
+   border-radius: 0.2em;
+   padding: 0.2em 0.6em;
+   color: #fff;
+   background-color: transparent;
+   font-family: inherit;
+   font-size: 0.9em;
+}
+
+.modes .activeMode {
+   background: none rgba(0, 0, 0, 0.15);
+}
+
+.pomodoroNumber {
+   text-align: center;
+   opacity: 0.5;
+}

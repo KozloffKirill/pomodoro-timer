@@ -30,23 +30,19 @@ const PomodoroInfo = () => {
             </article>
             <article className={styles.article}>
                <h2 className={styles.header}>How to use the Pomodoro Timer?</h2>
-               <p className={styles.content}>
-                  <ol className={styles.sequencingList}>
-                     <li className={styles.sequencingItem}><strong>Add task</strong> to work on today</li>
-                     <li className={styles.sequencingItem}><strong>Start timer</strong> and focus on the task for 25 minutes</li>
-                     <li className={styles.sequencingItem}><strong>Take a break</strong> for 5 minutes when the alarm ring</li>
-                  </ol>
-               </p>
+               <ol className={styles.sequencingList}>
+                  <li className={styles.sequencingItem}><strong>Add task</strong> to work on today</li>
+                  <li className={styles.sequencingItem}><strong>Start timer</strong> and focus on the task for 25 minutes</li>
+                  <li className={styles.sequencingItem}><strong>Take a break</strong> for 5 minutes when the alarm ring</li>
+               </ol>
             </article>
             <article className={styles.article}>
                <h2 className={styles.header}>Features</h2>
-               <p className={styles.content}>
-                  <ul className={styles.featureList}>
-                     <li className={styles.featureItem}><strong>Responsive design</strong> that works with desktop and mobile</li>
-                     <li className={styles.featureItem}><strong>Color transition</strong> to switch moods between work time and rest time</li>
-                     <li className={styles.featureItem}><strong>Customizable timer</strong> intervals to suit your preference</li>
-                  </ul>
-               </p>
+               <ul className={styles.featureList}>
+                  <li className={styles.featureItem}><strong>Responsive design</strong> that works with desktop and mobile</li>
+                  <li className={styles.featureItem}><strong>Color transition</strong> to switch moods between work time and rest time</li>
+                  <li className={styles.featureItem}><strong>Customizable timer</strong> intervals to suit your preference</li>
+               </ul>
             </article>
          </div >
       </section >

@@ -55,6 +55,8 @@ h1 {
 .sequencingList {
    padding-left: 1.6em;
    counter-reset: num;
+   color: rgb(120, 94, 96);
+   white-space: pre-line;
 }
 
 .sequencingItem {
@@ -69,13 +71,15 @@ h1 {
    display: inline-block;
    position: absolute;
    left: -1.4em;
-   bottom: 50%;
-   transform: translateY(50%);
+   top: 1.2em;
+   transform: translateY(-50%);
    color: rgb(233, 109, 115);
 }
 
 .featureList {
    padding-left: 1.6em;
+   color: rgb(120, 94, 96);
+   white-space: pre-line;
 }
 
 .featureItem {
@@ -93,9 +97,8 @@ h1 {
    background-color: rgb(233, 109, 115);
    position: absolute;
    left: -1.2em;
-   bottom: 50%;
-   transform: translateY(50%);
-
+   top: 1.25em;
+   transform: translateY(-50%);
 }
 
 .featureItem strong, .sequencingItem strong {

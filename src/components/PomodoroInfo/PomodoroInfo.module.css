@@ -26,7 +26,7 @@ h1 {
    line-height: 1.4em;
    font-weight: 500;
    color: rgb(84, 28, 31);
-   padding-bottom: 1.4em;
+   padding-bottom: 1.2em;
 }
 
 .header::after {
@@ -36,7 +36,7 @@ h1 {
    width: 1.2em;
    height: 0.14em;
    position: absolute;
-   bottom: 1.2em;
+   bottom: 1em;
    left: 0;
    opacity: 0.6;
 }

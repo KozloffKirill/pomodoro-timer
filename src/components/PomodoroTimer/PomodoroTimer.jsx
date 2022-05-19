@@ -1,14 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styles from "./PomodoroTimer.module.css";
 import Mode from "../../models/mode.js";
 import Skip from "../../assets/img/skip.png";
+import { SettingsContext } from "../../contexts/SettingsContext";
 
 const PomodoroTimer = () => {
+   const settings = useContext(SettingsContext);
    const [seconds, setSeconds] = useState(0);
-   const [minutes, setMinutes] = useState(25);
+   const [minutes, setMinutes] = useState(settings.pomodoro);
    const [isPaused, setIsPaused] = useState(true);
    const [mode, setMode] = useState(Mode.pomodoro);
    const [number, setNumber] = useState(1);
+
+   useEffect(() => {
+      setSeconds(0);
+      setMinutes(settings.pomodoro);
+   }, [settings]);
 
    useEffect(() => {
       let interval = null;
@@ -37,26 +44,26 @@ const PomodoroTimer = () => {
    function switchMode() {
       switch (mode) {
          case Mode.pomodoro:
-            if (number % 4) {
+            if (number % settings.longBreakInterval) {
                setMode(Mode.shortBreak);
                setSeconds(0);
-               setMinutes(5);
+               setMinutes(settings.shortBreak);
             } else {
                setMode(Mode.longBreak);
                setSeconds(0);
-               setMinutes(10);
+               setMinutes(settings.longBreak);
             }
             setNumber(number + 1);
             break;
          case Mode.shortBreak:
             setMode(Mode.pomodoro);
             setSeconds(0);
-            setMinutes(25);
+            setMinutes(settings.pomodoro);
             break;
          case Mode.longBreak:
             setMode(Mode.pomodoro);
             setSeconds(0);
-            setMinutes(25);
+            setMinutes(settings.pomodoro);
             break;
          default:
             break;
@@ -69,15 +76,15 @@ const PomodoroTimer = () => {
       switch (mode) {
          case Mode.pomodoro:
             setSeconds(0);
-            setMinutes(25);
+            setMinutes(settings.pomodoro);
             break;
          case Mode.shortBreak:
             setSeconds(0);
-            setMinutes(5);
+            setMinutes(settings.shortBreak);
             break;
          case Mode.longBreak:
             setSeconds(0);
-            setMinutes(10);
+            setMinutes(settings.longBreak);
             break;
          default:
             break;

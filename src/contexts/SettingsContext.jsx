@@ -8,3 +8,4 @@ export const settingsInitialState = {
 };
 
 export const SettingsContext = createContext(settingsInitialState); 
+SettingsContext.displayName="SettingsContext";

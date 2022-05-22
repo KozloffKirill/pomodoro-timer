@@ -13,13 +13,13 @@ const Footer = () => {
             </p>
             <ul className={styles.links}>
                <li>
-                  <a href="https://github.com/KozloffKirill" target="_blank">
-                     <img src={github} width="40" />
+                  <a href="https://github.com/KozloffKirill" target="_blank" rel="noreferrer">
+                     <img src={github} alt="github link" width="40" />
                   </a>
                </li>
                <li>
-                  <a href="https://t.me/KKozl0v" target="_blank">
-                     <img src={telegram} width="40" />
+                  <a href="https://t.me/KKozl0v" target="_blank" rel="noreferrer">
+                     <img src={telegram} alt="telegram link" width="40" />
                   </a>
                </li>
             </ul>

@@ -29,14 +29,16 @@ const TasksMenu = () => {
             <button className={styles.btnMenu} onClick={handleOpenDropdownClick}>
                <img src={dots} alt="menu" width="20" height="20" />
             </button>
-            <ul className={styles.dropdownContent + ` ${isOpen ? styles.show : undefined}`}>
-               <li onClick={handleClearCompletedTasksClick}>
-                  <img width="20px" height="20px" alt="trash" src={trash} /> <span>Clear finished tasks</span>
-               </li>
-               <li onClick={handleClearAllTasksClick}>
-                  <img width="20px" height="20px" alt="trash" src={trash} /> <span>Clear all tasks</span>
-               </li>
-            </ul>
+            {isOpen &&
+               <ul className={styles.dropdownContent}>
+                  <li onClick={handleClearCompletedTasksClick}>
+                     <img width="20px" height="20px" alt="trash" src={trash} /> <span>Clear finished tasks</span>
+                  </li>
+                  <li onClick={handleClearAllTasksClick}>
+                     <img width="20px" height="20px" alt="trash" src={trash} /> <span>Clear all tasks</span>
+                  </li>
+               </ul>
+            }
          </div>
 
       </div>

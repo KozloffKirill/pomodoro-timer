@@ -8,37 +8,13 @@
    margin: 0 auto;
 }
 
-.tasksMenu {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding-bottom: 1em;
-   border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+.taskList {
    margin-bottom: 0.8em;
 }
 
-.btnMenu {
-   background: none rgba(255, 255, 255, 0.2);
-   border: none;
-   border-radius: 0.2em;
-   padding: 0.4em;
-   opacity: 0.9;
-   transition: transform 0.1s linear;
+.taskList li:not(:last-child) {
+   margin-bottom: 0.4em;
 }
-
-.btnMenu img{
-   filter: brightness(0) invert(1);
-}
-
-.btnMenu:hover {
-   opacity: 1;
-}
-
-.btnMenu:active {
-   transform: translateY(2px);
-}
-
-.taskList {}
 
 .btnAdd {
    font-family: inherit;

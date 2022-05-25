@@ -8,14 +8,6 @@
    margin: 0 auto;
 }
 
-.taskList {
-   margin-bottom: 0.8em;
-}
-
-.taskList li:not(:last-child) {
-   margin-bottom: 0.4em;
-}
-
 .btnAdd {
    font-family: inherit;
    width: 100%;

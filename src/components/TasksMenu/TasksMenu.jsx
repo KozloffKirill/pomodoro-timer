@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import styles from "./TasksMenu.module.css";
 import dots from "../../assets/img/three-dots-icon.svg";
 import { TasksContext } from "../../contexts/TasksContext";
@@ -6,7 +6,24 @@ import trash from "../../assets/img/trash-icon.svg";
 
 const TasksMenu = () => {
    const { clearAllTasks, clearCompletedTasks } = useContext(TasksContext);
-   const [isOpen, setIsOpen] = useState(false);
+
+   const [isOpen, setIsOpen] = useState(false); // dropdown
+   const dropdownRef = useRef(null); // for closing dropdown on click outside
+   useEffect(() => {
+      function clickOutside(e) {
+         if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+            setIsOpen(false)
+         }
+      }
+
+      if (isOpen) {
+         document.addEventListener('mousedown', clickOutside);
+      }
+
+      return () => {
+         document.removeEventListener('mousedown', clickOutside);
+      };
+   }, [isOpen]);
 
    function handleOpenDropdownClick(e) {
       setIsOpen(!isOpen);
@@ -25,7 +42,7 @@ const TasksMenu = () => {
    return (
       <div className={styles.TasksMenu}>
          <span>Tasks</span>
-         <div className={styles.dropdown}>
+         <div className={styles.dropdown} ref={dropdownRef}>
             <button className={styles.btnMenu} onClick={handleOpenDropdownClick}>
                <img src={dots} alt="menu" width="20" height="20" />
             </button>
@@ -40,7 +57,6 @@ const TasksMenu = () => {
                </ul>
             }
          </div>
-
       </div>
    );
 };

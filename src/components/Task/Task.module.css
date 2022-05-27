@@ -1,0 +1,81 @@
+.Task {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0.8em 0.8em;
+   background-color: #fff;
+   border-radius: 0.3em;
+   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.16);
+}
+
+.left {
+   display: flex;
+   align-items: center;
+   flex-grow: 1;
+}
+
+.left.completed .mark {
+   background-color: rgb(217, 85, 80);
+}
+
+.left.completed .name {
+   text-decoration: line-through;
+   color: rgb(187, 187, 187);
+}
+
+.right {
+   display: flex;
+   align-items: center;
+}
+
+.estimate {
+   color: rgb(187, 187, 187);
+   font-weight: 700;
+   margin-right: 1em;
+   font-size: 0.9em;
+}
+
+.mark {
+   width: 26px;
+   height: 26px;
+   border-radius: 50%;
+   background-color: #dfdfdf;
+   margin-right: 0.6em;
+   border: none;
+   position: relative;
+}
+
+.mark::before {
+   content: "";
+   display: block;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%) rotate(-45deg);
+   width: 11px;
+   height: 5px;
+   border-left: 3px solid #fff;
+   border-bottom: 3px solid #fff;
+}
+
+
+.btnEdit {
+   background-color: #fff;
+   border: 1px solid rgb(223, 223, 223);
+   border-radius: 0.2em;
+   padding: 0.4em;
+}
+
+.btnEdit img {
+   filter: brightness(0) invert(0.6);
+}
+
+.btnEdit:hover {
+   background-color: rgb(223, 223, 223);
+}
+
+.name {
+   color: rgb(85, 85, 85);
+   line-height: 1.5em;
+   font-weight: 700;
+}

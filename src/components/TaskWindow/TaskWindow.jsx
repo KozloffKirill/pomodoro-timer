@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./TaskWindow.module.css";
 
-const TaskWindow = ({ children, footer, cancel, save }) => {
-   const [name, setName] = useState('');
-
-   function handleNameOnChange(e) {
-      setName(e.target.value);
-   }
+const TaskWindow = ({
+   children,
+   footer,
+   name, nameChange,
+   note, noteChange,
+   isNote, addNote,
+   cancel,
+   save,
+}) => {
 
    return (
       <div className={styles.TaskWindow}>
@@ -16,18 +19,40 @@ const TaskWindow = ({ children, footer, cancel, save }) => {
                   type="text"
                   placeholder="What are you working on?"
                   value={name}
-                  onChange={handleNameOnChange}
+                  onChange={nameChange}
                />
             </div>
             {children}
+            <div className={styles.note}>
+               {isNote ?
+                  <textarea
+                     placeholder="Some notes..."
+                     value={note}
+                     onChange={noteChange}
+                  >
+                  </textarea> :
+                  <button className={styles.btnAddNote} onClick={addNote}>+ Add Note</button>
+               }
+            </div>
          </div>
          <footer className={styles.taskFooter}>
             <div className={styles.left}>
                {footer}
             </div>
             <div className={styles.right}>
-               <button className={styles.btnCancel} onClick={cancel}>Cancel</button>
-               <button className={styles.btnSave} onClick={save}>Save</button>
+               <button
+                  className={styles.btnCancel}
+                  onClick={cancel}
+               >
+                  Cancel
+               </button>
+               <button
+                  className={styles.btnSave}
+                  disabled={!name.length}
+                  onClick={save}
+               >
+                  Save
+               </button>
             </div>
          </footer>
       </div>

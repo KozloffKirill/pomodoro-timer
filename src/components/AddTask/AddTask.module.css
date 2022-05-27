@@ -1,0 +1,48 @@
+.estPomodoros {
+   color: rgb(85, 85, 85);
+   font-weight: 700;
+   font-size: 0.9em;
+}
+
+.fieldName {
+   margin-bottom: 0.6em;
+}
+
+.estPomodoros input {
+   font-family: inherit;
+   color: inherit;
+   font-weight: inherit;
+   background-color: rgb(239, 239, 239);
+   padding: 0.6em;
+   margin-right: 0.6em;
+   border-radius: 0.2em;
+   border: none;
+   width: 60px;
+}
+
+.inputs {
+   display: flex;
+   align-items: center;
+}
+
+.inputs button {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: #fff;
+   border: 1px solid rgb(223, 223, 223);
+   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+   padding: 0.6em 0.8em;
+   border-radius: 0.2em;
+   margin-right: 0.4em;
+   opacity: 0.9;
+}
+
+.inputs button img {
+   filter: brightness(0) invert(0.4);
+}
+
+.inputs button:active {
+   box-shadow: none;
+   transform: translateY(2px);
+}

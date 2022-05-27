@@ -2,14 +2,27 @@
    background-color: #fff;
    border-radius: 0.6em;
    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+   animation: 0.1s ease-in-out 0s 1 normal none running expand;
+}
+
+@keyframes expand {
+   from {
+      opacity: 0;
+      transform: scale(1, 0);
+   }
+
+   to {
+      opacity: 1;
+      transform: scale(1, 1);
+   }
 }
 
 .taskParams {
-   padding: 1.4em 1.2em 1.2em;
+   padding: 1.4em 1.2em;
 }
 
 .name {
-   margin-bottom: 0.4em;
+   margin-bottom: 1.2em;
 }
 
 .name input {
@@ -24,6 +37,39 @@
 
 .name input::-webkit-input-placeholder {
    opacity: 0.5;
+}
+
+.note {
+   margin-top: 0.8em;
+}
+
+.note textarea {
+   font-size: 0.9em;
+   color: rgb(85, 85, 85);
+   line-height: 1.4em;
+   background-color: rgb(239, 239, 239);
+   border-radius: 0.2em;
+   padding: 0.6em 0.8em;
+   border: none;
+   width: 100%;
+   max-width: 100%;
+   min-height: 80px;
+   box-sizing: border-box;
+}
+
+.btnAddNote {
+   color: rgba(0, 0, 0, 0.4);
+   text-decoration: underline;
+   font-family: inherit;
+   font-weight: 700;
+   font-size: 0.8em;
+   background-color: transparent;
+   border: none;
+   opacity: 0.9;
+}
+
+.btnAddNote:hover {
+   opacity: 1;
 }
 
 .taskFooter {
@@ -62,4 +108,13 @@
    background-color: rgb(171, 171, 171);
    box-shadow: 0px 2px 2px rgb(0, 0, 0, 0.2);
    opacity: 0.9;
+}
+
+.btnSave:not(:disabled) {
+   background-color: rgb(34, 34, 34);
+   border: 2px solid rgb(34, 34, 34);
+}
+
+.btnSave:hover {
+   opacity: 1;
 }

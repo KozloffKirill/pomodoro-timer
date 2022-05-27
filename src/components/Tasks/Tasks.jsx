@@ -3,6 +3,7 @@ import styles from "./Tasks.module.css";
 import { TasksContext, tasksInitialState } from "../../contexts/TasksContext";
 import TasksMenu from "../TasksMenu/TasksMenu";
 import TasksList from "../TasksList/TasksList";
+import NewTask from "../NewTask/NewTask";
 
 const TasksReducer = (state, action) => {
    switch (action.type) {
@@ -28,6 +29,11 @@ const TasksReducer = (state, action) => {
                return task;
             })
          }
+      case 'ADD_TASK':
+         return {
+            ...state,
+            tasks: [...state.tasks, action.payload]
+         };
       default:
          return state;
    }
@@ -57,11 +63,15 @@ const Tasks = () => {
       });
    }
 
-   // Actions end //
 
-   function handleAddTaskClick(e) {
-
+   function addTask(task) {
+      dispatch({
+         type: 'ADD_TASK',
+         payload: task
+      });
    }
+
+   // Actions end //
 
    return (
       <div className={styles.Tasks}>
@@ -69,17 +79,13 @@ const Tasks = () => {
             tasks: state.tasks,
             clearAllTasks,
             clearCompletedTasks,
-            switchTaskCompleted
+            switchTaskCompleted,
+            addTask
          }}>
             <div className={styles.wrapper}>
                <TasksMenu />
                <TasksList />
-               <button
-                  className={styles.btnAdd}
-                  onClick={handleAddTaskClick}
-               >
-                  Add task
-               </button>
+               <NewTask />
             </div>
          </TasksContext.Provider>
       </div>

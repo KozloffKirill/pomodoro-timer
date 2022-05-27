@@ -12,7 +12,7 @@ const TasksList = () => {
             tasks?.map((task) => {
                return (
                   <li key={task.id}>
-                     <Task data={task} />
+                     <Task task={task} />
                   </li>
                );
             })

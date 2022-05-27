@@ -34,6 +34,19 @@ const TasksReducer = (state, action) => {
             ...state,
             tasks: [...state.tasks, action.payload]
          };
+      case 'EDIT_TASK':
+         return {
+            ...state,
+            tasks: state.tasks.map((task) => {
+               if (task.id === action.payload.id) {
+                  return {
+                     ...task,
+                     ...action.payload.changes
+                  };
+               }
+               return task;
+            })
+         };
       default:
          return state;
    }
@@ -71,6 +84,16 @@ const Tasks = () => {
       });
    }
 
+   function editTask(id, changes) {
+      dispatch({
+         type: 'EDIT_TASK',
+         payload: {
+            id,
+            changes
+         }
+      });
+   }
+
    // Actions end //
 
    return (
@@ -80,7 +103,8 @@ const Tasks = () => {
             clearAllTasks,
             clearCompletedTasks,
             switchTaskCompleted,
-            addTask
+            addTask,
+            editTask
          }}>
             <div className={styles.wrapper}>
                <TasksMenu />

@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { forwardRef, useContext, useState } from "react";
 import TaskWindow from "../TaskWindow/TaskWindow";
 import styles from "./EditTask.module.css";
 import caretDown from "../../assets/img/caret-down-icon.svg";
 import caretUp from "../../assets/img/caret-up-icon.svg";
 import { TasksContext } from "../../contexts/TasksContext";
 
-const EditTask = ({ task, cancel }) => {
+const EditTask = forwardRef(({ task, cancel }, ref) => {
    const [est, setEst] = useState(task.estPomodoros);
    const [act, setAct] = useState(task.actPomodoros);
    const [name, setName] = useState(task.name);
@@ -78,6 +78,7 @@ const EditTask = ({ task, cancel }) => {
          addNote={handleAddNoteClick}
          cancel={handleCancelClick}
          save={handleEditTaskClick}
+         ref={ref}
       >
          <div className={styles.estPomodoros}>
             <p className={styles.fieldName}>Est Pomodoros</p>
@@ -104,6 +105,6 @@ const EditTask = ({ task, cancel }) => {
          </div>
       </TaskWindow>
    );
-};
+});
 
 export default EditTask;

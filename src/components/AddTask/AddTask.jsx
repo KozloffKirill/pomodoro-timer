@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { forwardRef, useContext, useState } from "react";
 import TaskWindow from "../TaskWindow/TaskWindow";
 import styles from "./AddTask.module.css";
 import caretDown from "../../assets/img/caret-down-icon.svg";
@@ -6,7 +6,7 @@ import caretUp from "../../assets/img/caret-up-icon.svg";
 import { TasksContext } from "../../contexts/TasksContext";
 import TaskHelper from "../../helpers/task.helper";
 
-const AddTask = ({ cancel }) => {
+const AddTask = forwardRef(({ cancel }, ref) => {
    const [est, setEst] = useState(1);
    const [name, setName] = useState('');
    const [note, setNote] = useState('');
@@ -69,6 +69,7 @@ const AddTask = ({ cancel }) => {
          addNote={handleAddNoteClick}
          cancel={handleCancelClick}
          save={handleAddTaskClick}
+         ref={ref}
       >
          <div className={styles.estPomodoros}>
             <p className={styles.fieldName}>Est Pomodoros</p>
@@ -86,6 +87,6 @@ const AddTask = ({ cancel }) => {
          </div>
       </TaskWindow>
    );
-};
+});
 
 export default AddTask;

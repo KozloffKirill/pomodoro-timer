@@ -1,18 +1,18 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styles from "./TaskWindow.module.css";
 
-const TaskWindow = ({
+const TaskWindow = forwardRef(({
    children,
    footer,
    name, nameChange,
    note, noteChange,
    isNote, addNote,
    cancel,
-   save,
-}) => {
+   save
+}, ref) => {
 
    return (
-      <div className={styles.TaskWindow}>
+      <div className={styles.TaskWindow} ref={ref}>
          <div className={styles.taskParams}>
             <div className={styles.name}>
                <input
@@ -57,6 +57,6 @@ const TaskWindow = ({
          </footer>
       </div>
    );
-};
+});
 
 export default TaskWindow;

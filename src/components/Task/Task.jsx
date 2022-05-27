@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import styles from "./Task.module.css";
 import dots from "../../assets/img/three-dots-icon.svg";
 import { TasksContext } from "../../contexts/TasksContext";
@@ -8,6 +8,25 @@ const Task = ({ task }) => {
    const [isEdit, setIsEdit] = useState(false);
 
    const { switchTaskCompleted } = useContext(TasksContext);
+
+   const ref = useRef(null);
+   useEffect(() => {
+      function clickOutside(e) {
+         if (ref.current && !ref.current.contains(e.target)) {
+            if (window.confirm('The change will be lost. Are you sure you want to close it?')) {
+               setIsEdit(false);
+            }
+         }
+      }
+
+      if (isEdit) {
+         document.addEventListener('mousedown', clickOutside);
+      }
+
+      return () => {
+         document.removeEventListener('mousedown', clickOutside);
+      };
+   }, [isEdit]);
 
    function handleSwitchCompletedClick(e) {
       switchTaskCompleted(task.id);
@@ -27,6 +46,7 @@ const Task = ({ task }) => {
             <EditTask
                task={task}
                cancel={handleCancelClick}
+               ref={ref}
             /> :
             <>
                <div className={styles.firstRow}>

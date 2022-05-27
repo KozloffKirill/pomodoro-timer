@@ -16,21 +16,28 @@ const Task = ({ data }) => {
 
    return (
       <article className={styles.Task}>
-         <div className={styles.left + ` ${data.completed ? styles.completed : undefined}`}>
-            <button
-               className={styles.mark}
-               onClick={handleSwitchCompletedClick}>
-            </button>
-            <span className={styles.name}>{data.name}</span>
+         <div className={styles.firstRow}>
+            <div className={styles.left + ` ${data.completed ? styles.completed : undefined}`}>
+               <button
+                  className={styles.mark}
+                  onClick={handleSwitchCompletedClick}>
+               </button>
+               <span className={styles.name}>{data.name}</span>
+            </div>
+            <div className={styles.right}>
+               <span className={styles.estimate}>
+                  {data.actPomodoros}/{data.estPomodoros}
+               </span>
+               <button className={styles.btnEdit} onClick={handleEditTaskClick}>
+                  <img src={dots} alt="edit" width="20" height="20" />
+               </button>
+            </div>
          </div>
-         <div className={styles.right}>
-            <span className={styles.estimate}>
-               {data.actPomodoros}/{data.estPomodoros}
-            </span>
-            <button className={styles.btnEdit} onClick={handleEditTaskClick}>
-               <img src={dots} alt="edit" width="20" height="20" />
-            </button>
-         </div>
+         {data.note &&
+            <div className={styles.secondRow}>
+               <p className={styles.note}>{data.note}</p>
+            </div>
+         }
       </article>
    );
 };

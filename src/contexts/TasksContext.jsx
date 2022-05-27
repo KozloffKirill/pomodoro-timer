@@ -3,7 +3,7 @@ import TaskHelper from "../helpers/task.helper";
 
 export const tasksInitialState = {
    tasks: [
-      { name: 'Task 1', note: '', actPomodoros: 0, estPomodoros: 3, completed: false, id: TaskHelper.getNewId() },
+      { name: 'Task 1', note: 'Нет, через графический интерфейс мы создаём объекты, которые после создания начинают работать в отдельных потоках, выполняя различные действия.Эти действия должны отображаться обратно на интерфейс.', actPomodoros: 0, estPomodoros: 3, completed: false, id: TaskHelper.getNewId() },
       { name: 'Task 2', note: '', actPomodoros: 0, estPomodoros: 3, completed: false, id: TaskHelper.getNewId() },
       { name: 'Task 3', note: '', actPomodoros: 0, estPomodoros: 3, completed: true, id: TaskHelper.getNewId() }
    ],

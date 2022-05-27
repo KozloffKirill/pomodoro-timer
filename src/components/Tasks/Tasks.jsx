@@ -47,6 +47,11 @@ const TasksReducer = (state, action) => {
                return task;
             })
          };
+      case 'DELETE_TASK':
+         return {
+            ...state,
+            tasks: state.tasks.filter((task) => task.id !== action.payload)
+         };
       default:
          return state;
    }
@@ -94,6 +99,13 @@ const Tasks = () => {
       });
    }
 
+   function deleteTask(id) {
+      dispatch({
+         type: 'DELETE_TASK',
+         payload: id
+      });
+   }
+
    // Actions end //
 
    return (
@@ -104,7 +116,8 @@ const Tasks = () => {
             clearCompletedTasks,
             switchTaskCompleted,
             addTask,
-            editTask
+            editTask,
+            deleteTask
          }}>
             <div className={styles.wrapper}>
                <TasksMenu />

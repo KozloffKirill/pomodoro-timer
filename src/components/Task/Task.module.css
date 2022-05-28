@@ -62,6 +62,7 @@
    margin-right: 0.6em;
    border: none;
    position: relative;
+   flex-shrink: 0;
 }
 
 .mark::before {

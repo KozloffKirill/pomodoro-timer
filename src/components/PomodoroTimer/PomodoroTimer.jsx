@@ -2,14 +2,13 @@ import React, { useState, useEffect, useContext } from "react";
 import styles from "./PomodoroTimer.module.css";
 import Mode from "../../models/mode.js";
 import Skip from "../../assets/img/skip.png";
-import { SettingsContext } from "../../contexts/SettingsContext";
+import { PomodoroContext } from "../../contexts/PomodoroContext";
 
 const PomodoroTimer = () => {
-   const settings = useContext(SettingsContext);
+   const { settings, mode, editMode } = useContext(PomodoroContext);
    const [seconds, setSeconds] = useState(0);
    const [minutes, setMinutes] = useState(settings.pomodoro);
    const [isPaused, setIsPaused] = useState(true);
-   const [mode, setMode] = useState(Mode.pomodoro);
    const [number, setNumber] = useState(1);
 
    useEffect(() => {
@@ -45,23 +44,23 @@ const PomodoroTimer = () => {
       switch (mode) {
          case Mode.pomodoro:
             if (number % settings.longBreakInterval) {
-               setMode(Mode.shortBreak);
+               editMode(Mode.shortBreak);
                setSeconds(0);
                setMinutes(settings.shortBreak);
             } else {
-               setMode(Mode.longBreak);
+               editMode(Mode.longBreak);
                setSeconds(0);
                setMinutes(settings.longBreak);
             }
             setNumber(number + 1);
             break;
          case Mode.shortBreak:
-            setMode(Mode.pomodoro);
+            editMode(Mode.pomodoro);
             setSeconds(0);
             setMinutes(settings.pomodoro);
             break;
          case Mode.longBreak:
-            setMode(Mode.pomodoro);
+            editMode(Mode.pomodoro);
             setSeconds(0);
             setMinutes(settings.pomodoro);
             break;
@@ -72,7 +71,7 @@ const PomodoroTimer = () => {
 
    function handleSwitchModeClick(e, mode) {
       setIsPaused(true);
-      setMode(mode);
+      editMode(mode);
       switch (mode) {
          case Mode.pomodoro:
             setSeconds(0);

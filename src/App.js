@@ -5,17 +5,27 @@ import Header from './components/Header/Header';
 import PomodoroInfo from './components/PomodoroInfo/PomodoroInfo';
 import PomodoroTimer from './components/PomodoroTimer/PomodoroTimer';
 import Tasks from './components/Tasks/Tasks';
-import { SettingsContext, settingsInitialState } from './contexts/SettingsContext';
+import { PomodoroContext, pomodoroInitialState } from './contexts/PomodoroContext';
 
-const SettingsReducer = (state, action) => {
+const PomodoroReducer = (state, action) => {
   switch (action.type) {
     case "EDIT_SETTINGS":
-      return action.payload;
+      return {
+        ...state,
+        settings: action.payload
+      };
+    case "EDIT_MODE":
+      return {
+        ...state,
+        mode: action.payload
+      };
+    default:
+      return state;
   }
 };
 
 function App() {
-  const [state, dispatch] = useReducer(SettingsReducer, settingsInitialState);
+  const [state, dispatch] = useReducer(PomodoroReducer, pomodoroInitialState);
 
   // Actions start //
 
@@ -26,18 +36,30 @@ function App() {
     });
   }
 
+  function editMode(mode) {
+    dispatch({
+      type: 'EDIT_MODE',
+      payload: mode
+    });
+  }
+
   // Actions end //
 
   return (
     <div className="App">
-      <SettingsContext.Provider value={state}>
+      <PomodoroContext.Provider value={{
+        settings: state.settings,
+        mode: state.mode,
+        editSettings,
+        editMode
+      }}>
         <Header text="Pomodoro Timer" />
         <main>
           <PomodoroTimer />
           <Tasks />
           <PomodoroInfo />
         </main>
-      </SettingsContext.Provider>
+      </PomodoroContext.Provider>
       <Footer />
     </div>
   );

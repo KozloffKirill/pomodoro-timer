@@ -1,4 +1,5 @@
 import { createContext, useReducer } from "react";
+import TaskHelper from "../helpers/task.helper";
 
 const TasksReducer = (state, action) => {
    switch (action.type) {
@@ -47,13 +48,24 @@ const TasksReducer = (state, action) => {
             ...state,
             tasks: state.tasks.filter((task) => task.id !== action.payload)
          };
+      case 'SELECT_ACTIVE_TASK':
+         return {
+            ...state,
+            activeTask: action.payload
+         };
       default:
          return state;
    }
 };
 
 const tasksInitialState = {
-   tasks: []
+   tasks: [
+      { name: 'Task 1', note: '', actPomodoros: 0, estPomodoros: 3, completed: false, id: TaskHelper.getNewId() },
+      { name: 'Task 2', note: 'Он хочет лично всех увидеть, чтобы посмотреть, какие мы активные', actPomodoros: 0, estPomodoros: 4, completed: true, id: TaskHelper.getNewId() },
+      { name: 'Task 3', note: 'Jijka', actPomodoros: 0, estPomodoros: 3, completed: false, id: TaskHelper.getNewId() },
+      { name: 'Task 4', note: '', actPomodoros: 0, estPomodoros: 3, completed: false, id: TaskHelper.getNewId() },
+   ],
+   activeTask: null
 };
 
 export const TasksContext = createContext(tasksInitialState);
@@ -107,17 +119,26 @@ const TasksProvider = ({ children }) => {
       });
    }
 
+   function selectActiveTask(id) {
+      dispatch({
+         type: 'SELECT_ACTIVE_TASK',
+         payload: id
+      });
+   }
+
    // Actions end //
 
    return (
       <TasksContext.Provider value={{
          tasks: state.tasks,
+         activeTask: state.activeTask,
          clearAllTasks,
          clearCompletedTasks,
          switchTaskCompleted,
          addTask,
          editTask,
-         deleteTask
+         deleteTask,
+         selectActiveTask
       }}>
          {children}
       </TasksContext.Provider>

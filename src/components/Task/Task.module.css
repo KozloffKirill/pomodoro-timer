@@ -37,6 +37,10 @@
    background-color: rgb(217, 85, 80);
 }
 
+.left:not(.completed) .mark:hover {
+   opacity: 0.6;
+}
+
 .left.completed .name {
    text-decoration: line-through;
    color: rgb(187, 187, 187);
@@ -77,7 +81,6 @@
    border-left: 3px solid #fff;
    border-bottom: 3px solid #fff;
 }
-
 
 .btnEdit {
    background-color: #fff;

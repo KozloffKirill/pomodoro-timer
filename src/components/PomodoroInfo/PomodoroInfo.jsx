@@ -32,8 +32,12 @@ const PomodoroInfo = () => {
                <h2 className={styles.header}>How to use the Pomodoro Timer?</h2>
                <ol className={styles.sequencingList}>
                   <li className={styles.sequencingItem}><strong>Add task</strong> to work on today</li>
+                  <li className={styles.sequencingItem}><strong>Set estimate pomodoros</strong> (1 = 25min of work) for each tasks</li>
+                  <li className={styles.sequencingItem}><strong>Select a task</strong>  to work on</li>
                   <li className={styles.sequencingItem}><strong>Start timer</strong> and focus on the task for 25 minutes</li>
-                  <li className={styles.sequencingItem}><strong>Take a break</strong> for 5 minutes when the alarm ring</li>
+                  <li className={styles.sequencingItem}><strong>Take a break</strong> for 5 minutes</li>
+                  <li className={styles.sequencingItem}><strong>Iterate</strong> 3-5 until you finish the tasks</li>
+
                </ol>
             </article>
             <article className={styles.article}>

@@ -4,10 +4,10 @@ import dots from "../../assets/img/three-dots-icon.svg";
 import { TasksContext } from "../../contexts/TasksContext";
 import EditTask from "../EditTask/EditTask";
 
-const Task = ({ task }) => {
+const Task = ({ task, active }) => {
    const [isEdit, setIsEdit] = useState(false);
 
-   const { switchTaskCompleted } = useContext(TasksContext);
+   const { switchTaskCompleted, selectActiveTask } = useContext(TasksContext);
 
    const ref = useRef(null);
    useEffect(() => {
@@ -28,7 +28,16 @@ const Task = ({ task }) => {
       };
    }, [isEdit]);
 
+   function handleActiveTaskClick(e) {
+      if (active) {
+         selectActiveTask(null)
+      } else {
+         selectActiveTask(task.id);
+      }
+   }
+
    function handleSwitchCompletedClick(e) {
+      e.stopPropagation();
       switchTaskCompleted(task.id);
    }
 
@@ -41,14 +50,17 @@ const Task = ({ task }) => {
    }
 
    return (
-      <article className={styles.Task}>
+      <>
          {isEdit ?
             <EditTask
                task={task}
                cancel={handleCancelClick}
                ref={ref}
             /> :
-            <>
+            <article
+               className={`${styles.Task} ${active && styles.active}`}
+               onClick={handleActiveTaskClick}
+            >
                <div className={styles.firstRow}>
                   <div className={styles.left + ` ${task.completed ? styles.completed : undefined}`}>
                      <button
@@ -71,9 +83,9 @@ const Task = ({ task }) => {
                      <p className={styles.note}>{task.note}</p>
                   </div>
                }
-            </>
+            </article>
          }
-      </article>
+      </>
    );
 };
 

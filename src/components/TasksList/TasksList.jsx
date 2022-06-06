@@ -4,7 +4,7 @@ import styles from "./TasksList.module.css";
 import Task from "../Task/Task";
 
 const TasksList = () => {
-   const { tasks } = useContext(TasksContext);
+   const { tasks, activeTask } = useContext(TasksContext);
 
    return (
       <ul className={styles.taskList}>
@@ -12,7 +12,10 @@ const TasksList = () => {
             tasks?.map((task) => {
                return (
                   <li key={task.id}>
-                     <Task task={task} />
+                     <Task
+                        task={task}
+                        active={task.id === activeTask}
+                     />
                   </li>
                );
             })

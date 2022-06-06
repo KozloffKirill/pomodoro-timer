@@ -3,13 +3,15 @@ import styles from "./PomodoroTimer.module.css";
 import Mode from "../../models/mode.js";
 import Skip from "../../assets/img/skip.png";
 import { PomodoroContext } from "../../contexts/PomodoroContext";
+import { TasksContext } from "../../contexts/TasksContext";
 
 const PomodoroTimer = () => {
    const { settings, mode, editMode } = useContext(PomodoroContext);
+   const { increaseActPomodoros } = useContext(TasksContext);
    const [seconds, setSeconds] = useState(0);
    const [minutes, setMinutes] = useState(settings.pomodoro);
    const [isPaused, setIsPaused] = useState(true);
-   const [number, setNumber] = useState(1);
+   const [pomodoroNumber, setPomodoroNumber] = useState(1);
 
    useEffect(() => {
       setSeconds(0);
@@ -28,6 +30,7 @@ const PomodoroTimer = () => {
                } else {
                   setIsPaused(true);
                   switchMode();
+                  increaseActPomodoros();
                }
             } else {
                setSeconds(seconds - 1);
@@ -43,7 +46,7 @@ const PomodoroTimer = () => {
    function switchMode() {
       switch (mode) {
          case Mode.pomodoro:
-            if (number % settings.longBreakInterval) {
+            if (pomodoroNumber % settings.longBreakInterval) {
                editMode(Mode.shortBreak);
                setSeconds(0);
                setMinutes(settings.shortBreak);
@@ -52,7 +55,7 @@ const PomodoroTimer = () => {
                setSeconds(0);
                setMinutes(settings.longBreak);
             }
-            setNumber(number + 1);
+            setPomodoroNumber(pomodoroNumber + 1);
             break;
          case Mode.shortBreak:
             editMode(Mode.pomodoro);
@@ -97,6 +100,9 @@ const PomodoroTimer = () => {
    function handleSkipClick(e) {
       setIsPaused(true);
       switchMode();
+      if (mode === Mode.pomodoro) {
+         increaseActPomodoros();
+      }
    }
 
    const timerMinutes = minutes < 10 ? `0${minutes}` : minutes;
@@ -144,7 +150,7 @@ const PomodoroTimer = () => {
                   </button>
                </div>
             </div>
-            <p className={styles.pomodoroNumber}>#{number}</p>
+            <p className={styles.pomodoroNumber}>#{pomodoroNumber}</p>
          </div>
       </div>
    );

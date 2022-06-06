@@ -25,6 +25,20 @@ const TasksReducer = (state, action) => {
                return task;
             })
          }
+      case 'INCREASE_ACT_POMODOROS':
+         return {
+            ...state,
+            tasks: state.activeTask !== null ?
+               state.tasks.map((task) => {
+                  if (task.id === state.activeTask) {
+                     const newTask = Object.assign({}, task);
+                     newTask.actPomodoros++;
+                     return newTask;
+                  }
+                  return task;
+               }) :
+               state.tasks
+         }
       case 'ADD_TASK':
          return {
             ...state,
@@ -95,6 +109,12 @@ const TasksProvider = ({ children }) => {
       });
    }
 
+   function increaseActPomodoros() {
+      dispatch({
+         type: 'INCREASE_ACT_POMODOROS'
+      });
+   }
+
    function addTask(task) {
       dispatch({
          type: 'ADD_TASK',
@@ -138,7 +158,8 @@ const TasksProvider = ({ children }) => {
          addTask,
          editTask,
          deleteTask,
-         selectActiveTask
+         selectActiveTask,
+         increaseActPomodoros
       }}>
          {children}
       </TasksContext.Provider>

@@ -6,11 +6,24 @@ const TasksReducer = (state, action) => {
       case 'CLEAR_ALL_TASKS':
          return {
             ...state,
+            activeTask: null,
             tasks: []
          };
       case 'CLEAR_COMPLETED_TASKS':
+         const activeTask = state.activeTask;
+         let newActiveTask = null;
+         if (activeTask) {
+            for (let task of state.tasks) {
+               console.log(task);
+               if (task.id === state.activeTask) {
+                  newActiveTask = task.completed ? null : state.activeTask;
+                  break;
+               }
+            }
+         }
          return {
             ...state,
+            activeTask: newActiveTask,
             tasks: state.tasks.filter((task) => !task.completed)
          };
       case 'SWITCH_TASK_COMPLETED':
@@ -28,16 +41,14 @@ const TasksReducer = (state, action) => {
       case 'INCREASE_ACT_POMODOROS':
          return {
             ...state,
-            tasks: state.activeTask !== null ?
-               state.tasks.map((task) => {
-                  if (task.id === state.activeTask) {
-                     const newTask = Object.assign({}, task);
-                     newTask.actPomodoros++;
-                     return newTask;
-                  }
-                  return task;
-               }) :
-               state.tasks
+            tasks: state.tasks.map((task) => {
+               if (task.id === state.activeTask) {
+                  const newTask = Object.assign({}, task);
+                  newTask.actPomodoros++;
+                  return newTask;
+               }
+               return task;
+            })
          }
       case 'ADD_TASK':
          return {

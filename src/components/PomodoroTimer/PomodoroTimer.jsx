@@ -7,7 +7,7 @@ import { TasksContext } from "../../contexts/TasksContext";
 
 const PomodoroTimer = () => {
    const { settings, mode, editMode } = useContext(PomodoroContext);
-   const { increaseActPomodoros } = useContext(TasksContext);
+   const { increaseActPomodoros, activeTask } = useContext(TasksContext);
    const [seconds, setSeconds] = useState(0);
    const [minutes, setMinutes] = useState(settings.pomodoro);
    const [isPaused, setIsPaused] = useState(true);
@@ -30,7 +30,9 @@ const PomodoroTimer = () => {
                } else {
                   setIsPaused(true);
                   switchMode();
-                  increaseActPomodoros();
+                  if (activeTask) {
+                     increaseActPomodoros();
+                  }
                }
             } else {
                setSeconds(seconds - 1);
@@ -103,7 +105,7 @@ const PomodoroTimer = () => {
       if (window.confirm('Are you sure you want to finish the round early?')) {
          setIsPaused(true);
          switchMode();
-         if (mode === Mode.pomodoro) {
+         if (mode === Mode.pomodoro && activeTask) {
             increaseActPomodoros();
          }
       }
@@ -150,7 +152,7 @@ const PomodoroTimer = () => {
                      onClick={handleSkipClick}
                      disabled={isPaused ? true : false}
                   >
-                     <img src={Skip} width="30" height="30" />
+                     <img src={Skip} alt="skip" width="30" height="30" />
                   </button>
                </div>
             </div>

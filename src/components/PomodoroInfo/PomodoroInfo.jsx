@@ -12,7 +12,7 @@ const PomodoroInfo = () => {
                <p className={styles.content}>
                   This is a customizable pomodoro timer that works on desktop &
                   mobile browser. The aim of this app is to help you focus on any task you
-                  are working on, such as study, writing, or coding. This app is inspired by <a href="https://francescocirillo.com/pages/pomodoro-technique" target="_blank">Pomodoro Technique</a> which
+                  are working on, such as study, writing, or coding. This app is inspired by <a href="https://francescocirillo.com/pages/pomodoro-technique" target="_blank" rel="noreferrer">Pomodoro Technique</a> which
                   is a time management method developed by
                   Francesco Cirillo.
                </p>

@@ -1,6 +1,15 @@
 .Tasks {
-   margin-bottom: 4em;
-   padding: 0 1em;
+   padding: 0 1em 4em;
+   background-color: rgb(217, 85, 80);
+   transition: background-color 0.5s ease-in-out 0s;
+}
+
+.shortBreakTheme {
+   background-color: rgb(76, 145, 149);
+}
+
+.longBreakTheme {
+   background-color: rgb(69, 124, 163);
 }
 
 .wrapper {

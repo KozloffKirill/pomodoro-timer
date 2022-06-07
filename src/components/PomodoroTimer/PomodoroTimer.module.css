@@ -1,6 +1,15 @@
 .PomodoroTimer {
-   margin-bottom: 1em;
-   padding: 0 1em;
+   padding: 0 1em 1em;
+   background-color: rgb(217, 85, 80);
+   transition: background-color 0.5s ease-in-out 0s;
+}
+
+.shortBreakTheme {
+   background-color: rgb(76, 145, 149);
+}
+
+.longBreakTheme {
+   background-color: rgb(69, 124, 163);
 }
 
 .wrapper {
@@ -36,6 +45,15 @@
    font-weight: 700;
    font-family: inherit;
    box-shadow: 0 0.4em rgb(235, 235, 235);
+   transition: color 0.5s ease-in-out 0s;
+}
+
+.shortBreakTheme .btnStart {
+   color: rgb(76, 145, 149);
+}
+
+.longBreakTheme .btnStart {
+   color: rgb(69, 124, 163);
 }
 
 .btnStop {
@@ -52,6 +70,14 @@
    font-family: inherit;
    box-shadow: none;
    transform: translateY(0.4em);
+}
+
+.shortBreakTheme .btnStop {
+   color: rgb(76, 145, 149);
+}
+
+.longBreakTheme .btnStop {
+   color: rgb(69, 124, 163);
 }
 
 .timerButtons {

@@ -4,7 +4,7 @@ import styles from "./PomodoroInfo.module.css";
 const PomodoroInfo = () => {
 
    return (
-      <section className={styles.PomodoroInfo}>
+      <div className={styles.PomodoroInfo}>
          <div className={styles.wrapper}>
             <h1>An online Pomodoro Timer to boost your productivity</h1>
             <article className={styles.article}>
@@ -48,8 +48,8 @@ const PomodoroInfo = () => {
                   <li className={styles.featureItem}><strong>Customizable timer</strong> intervals to suit your preference</li>
                </ul>
             </article>
-         </div >
-      </section >
+         </div>
+      </div>
    );
 };
 

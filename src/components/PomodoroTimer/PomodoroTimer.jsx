@@ -114,7 +114,7 @@ const PomodoroTimer = () => {
    const timerMinutes = minutes < 10 ? `0${minutes}` : minutes;
    const timerSeconds = seconds < 10 ? `0${seconds}` : seconds;
    return (
-      <div className={styles.PomodoroTimer}>
+      <div className={`${styles.PomodoroTimer} ${mode === Mode.shortBreak && styles.shortBreakTheme} ${mode === Mode.longBreak && styles.longBreakTheme}`}>
          <div className={styles.wrapper}>
             <div className={styles.timer}>
                <div className={styles.modes}>

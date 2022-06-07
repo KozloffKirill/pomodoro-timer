@@ -73,23 +73,25 @@ const PomodoroTimer = () => {
    }
 
    function handleSwitchModeClick(e, mode) {
-      setIsPaused(true);
-      editMode(mode);
-      switch (mode) {
-         case Mode.pomodoro:
-            setSeconds(0);
-            setMinutes(settings.pomodoro);
-            break;
-         case Mode.shortBreak:
-            setSeconds(0);
-            setMinutes(settings.shortBreak);
-            break;
-         case Mode.longBreak:
-            setSeconds(0);
-            setMinutes(settings.longBreak);
-            break;
-         default:
-            break;
+      if (isPaused || window.confirm('The timer is still running, are you sure you want to switch?')) {
+         setIsPaused(true);
+         editMode(mode);
+         switch (mode) {
+            case Mode.pomodoro:
+               setSeconds(0);
+               setMinutes(settings.pomodoro);
+               break;
+            case Mode.shortBreak:
+               setSeconds(0);
+               setMinutes(settings.shortBreak);
+               break;
+            case Mode.longBreak:
+               setSeconds(0);
+               setMinutes(settings.longBreak);
+               break;
+            default:
+               break;
+         }
       }
    }
 
@@ -98,10 +100,12 @@ const PomodoroTimer = () => {
    }
 
    function handleSkipClick(e) {
-      setIsPaused(true);
-      switchMode();
-      if (mode === Mode.pomodoro) {
-         increaseActPomodoros();
+      if (window.confirm('Are you sure you want to finish the round early?')) {
+         setIsPaused(true);
+         switchMode();
+         if (mode === Mode.pomodoro) {
+            increaseActPomodoros();
+         }
       }
    }
 

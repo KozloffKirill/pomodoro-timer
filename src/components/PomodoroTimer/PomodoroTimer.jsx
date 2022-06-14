@@ -107,7 +107,7 @@ const PomodoroTimer = () => {
       if (window.confirm('Are you sure you want to finish the round early?')) {
          setIsPaused(true);
          switchMode();
-         if (mode === Mode.pomodoro && activeTask) {
+         if (mode === Mode.pomodoro && activeTask !== null) {
             increaseActPomodoros();
          }
       }

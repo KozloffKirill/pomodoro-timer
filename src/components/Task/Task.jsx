@@ -42,6 +42,7 @@ const Task = ({ task, active }) => {
    }
 
    function handleEditTaskClick(e) {
+      e.stopPropagation();
       setIsEdit(true);
    }
 

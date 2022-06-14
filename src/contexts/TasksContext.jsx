@@ -71,6 +71,7 @@ const TasksReducer = (state, action) => {
       case 'DELETE_TASK':
          return {
             ...state,
+            activeTask: action.payload === state.activeTask ? null : state.activeTask,
             tasks: state.tasks.filter((task) => task.id !== action.payload)
          };
       case 'SELECT_ACTIVE_TASK':

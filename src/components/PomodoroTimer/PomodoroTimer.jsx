@@ -32,7 +32,7 @@ const PomodoroTimer = () => {
                } else {
                   setIsPaused(true);
                   switchMode();
-                  if (activeTask) {
+                  if (activeTask !== null) {
                      increaseActPomodoros();
                   }
                }

@@ -14,8 +14,10 @@ const PomodoroTimer = () => {
    const [pomodoroNumber, setPomodoroNumber] = useState(1);
 
    useEffect(() => {
-      setSeconds(0);
-      setMinutes(settings.pomodoro);
+      if (isPaused) {
+         setSeconds(0);
+         setMinutes(settings.pomodoro);
+      }
    }, [settings]);
 
    useEffect(() => {

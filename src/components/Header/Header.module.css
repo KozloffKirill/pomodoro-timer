@@ -1,5 +1,5 @@
 .Header {
-   padding: 0.6em 1em 1em;
+   padding: 0.8em 1em;
    background-color: rgb(217, 85, 80);
    transition: background-color 0.5s ease-in-out 0s;
 }
@@ -9,7 +9,7 @@
 }
 
 .longBreakTheme {
-   background-color: rgb(69, 124, 163);;
+   background-color: rgb(69, 124, 163);
 }
 
 .wrapper {
@@ -17,9 +17,46 @@
    margin: 0 auto;
 }
 
+.container {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
 .name {
-   font-size: 2em;
+   display: flex;
+   align-items: center;
+   font-size: 1.8em;
    font-weight: 700;
    font-style: italic;
-   text-align: center;
+}
+
+.name img {
+   margin-right: 0.4em;
+}
+
+.btnSettings {
+   display: flex;
+   align-items: center;
+   background-color: rgba(255, 255, 255, 0.1);
+   border: none;
+   border-radius: 0.2em;
+   font-size: 0.9em;
+   padding: 0.6em 0.8em;
+   color: #fff;   
+   opacity: 0.9;
+   transition: transform 0.1s linear;
+}
+
+.btnSettings:hover {
+   opacity: 1;
+}
+
+.btnSettings:active {
+   transform: translateY(2px);
+}
+
+.btnSettings img {
+   filter: brightness(0) invert(1);
+   margin-right: 4px;
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import styles from "./PomodoroTimer.module.css";
 import Mode from "../../models/mode.js";
-import Skip from "../../assets/img/skip.png";
+import skip from "../../assets/img/skip-icon.svg";
 import { PomodoroContext } from "../../contexts/PomodoroContext";
 import { TasksContext } from "../../contexts/TasksContext";
 
@@ -154,7 +154,7 @@ const PomodoroTimer = () => {
                      onClick={handleSkipClick}
                      disabled={isPaused ? true : false}
                   >
-                     <img src={Skip} alt="skip" width="30" height="30" />
+                     <img src={skip} alt="skip" width="50" height="50" />
                   </button>
                </div>
             </div>

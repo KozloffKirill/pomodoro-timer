@@ -90,12 +90,11 @@
    top: calc(50% + 8.64px);
    transform: translate(50%, -50%);
    background-color: transparent;
-   width: 2em;
-   height: 2em;
    border: none;
    padding: 0;
    text-align: center;
    transition: opacity 0.2s linear;
+   filter: brightness(0) invert(1);
 }
 
 .btnSkipTrans {
@@ -103,8 +102,6 @@
    top: calc(50% + 8.64px);
    transform: translate(50%, -50%);
    background-color: transparent;
-   width: 2em;
-   height: 2em;
    border: none;
    padding: 0;
    text-align: center;

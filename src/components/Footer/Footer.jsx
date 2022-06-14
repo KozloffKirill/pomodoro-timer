@@ -24,7 +24,7 @@ const Footer = () => {
                </li>
             </ul>
          </div>
-      </footer >
+      </footer>
    );
 };
 

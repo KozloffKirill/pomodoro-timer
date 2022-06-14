@@ -1,0 +1,124 @@
+.PomodoroSettings {
+   color: rgb(85, 85, 85);
+   font-size: 18px !important;
+}
+
+.PomodoroSettings header {
+   padding: 1em 1em 0.9em;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   border-bottom: 2px solid rgb(239, 239, 239);
+}
+
+.modalName {
+   color: rgb(187, 187, 187);
+   text-transform: uppercase;
+   font-weight: 700;
+}
+
+.btnClose {
+   background-color: transparent;
+   border: none;
+   padding: 0;
+   filter: brightness(0) invert(0.4);
+   opacity: 0.6;
+}
+
+.btnClose:hover {
+   opacity: 1;
+}
+
+.main {
+   padding: 1em 1em 0;
+}
+
+.pomodoroForm fieldset {
+   padding: 1em 0;
+}
+
+.pomodoroForm fieldset:not(:last-child) {
+   border-bottom: 2px solid rgb(239, 239, 239);
+}
+
+.fieldName {
+   color: rgb(85, 85, 85);
+   font-weight: bold;
+   font-size: 0.9em;
+}
+
+.timeInputs {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-top: 0.6em;
+}
+
+.timeInputs label {
+   font-size: 0.8em;
+   color: rgb(187, 187, 187);
+   font-weight: 500;
+   width: 100px;
+}
+
+.timeInputs input {
+   font-family: inherit;
+   background-color: rgb(239, 239, 239);
+   padding: 0.6em;
+   border-radius: 0.2em;
+   border: none;
+   width: 100%;
+   margin-top: 0.4em;
+   box-sizing: border-box;
+   color: rgb(85, 85, 85);
+   font-weight: 500;
+}
+
+.intervalInputs {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.intervalInputs input {
+   font-size: 0.8em;
+   font-family: inherit;
+   background-color: rgb(239, 239, 239);
+   padding: 0.6em;
+   border-radius: 0.2em;
+   border: none;
+   width: 70px;
+   box-sizing: border-box;
+   color: rgb(85, 85, 85);
+   font-weight: 500;
+}
+
+footer {
+   display: flex;
+   align-items: center;
+   justify-content: right;
+   padding: 0.8em 1em;
+   background-color: rgb(239, 239, 239);
+   border-bottom-left-radius: 0.6em;
+   border-bottom-right-radius: 0.6em;
+}
+
+.btnOk {
+   border-radius: 0.2em;
+   background-color: rgb(34, 34, 34);
+   min-width: 70px;
+   font-size: 0.8em;
+   padding: 0.6em 0.6em;
+   border: none;
+   color: #fff;
+   font-family: inherit;
+   opacity: 0.9;
+}
+
+.btnOk:disabled {
+   background-color: rgb(170, 170, 170);
+}
+
+.btnOk:not(:disabled):hover {
+   opacity: 1;
+}

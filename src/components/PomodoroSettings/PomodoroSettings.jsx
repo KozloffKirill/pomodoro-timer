@@ -29,7 +29,6 @@ const PomodoroSettings = ({ onClose }) => {
    }
 
    function handleSaveClick(e) {
-      console.log(e);
       e.preventDefault();
       editSettings({
          pomodoro: Math.ceil(pomodoro),

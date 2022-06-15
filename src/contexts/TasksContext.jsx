@@ -14,7 +14,6 @@ const TasksReducer = (state, action) => {
          let newActiveTask = null;
          if (activeTask) {
             for (let task of state.tasks) {
-               console.log(task);
                if (task.id === state.activeTask) {
                   newActiveTask = task.completed ? null : state.activeTask;
                   break;

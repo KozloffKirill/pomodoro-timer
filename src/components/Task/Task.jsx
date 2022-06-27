@@ -1,32 +1,18 @@
-import React, { useContext, useState, useRef, useEffect } from "react";
+import React, { useContext } from "react";
 import styles from "./Task.module.css";
 import dots from "../../assets/img/three-dots-icon.svg";
 import { TasksContext } from "../../contexts/TasksContext";
 import EditTask from "../EditTask/EditTask";
+import useDropdown from "../../hooks/useDropdown";
 
 const Task = ({ task, active }) => {
-   const [isEdit, setIsEdit] = useState(false);
-
    const { switchTaskCompleted, selectActiveTask } = useContext(TasksContext);
 
-   const ref = useRef(null);
-   useEffect(() => {
-      function clickOutside(e) {
-         if (ref.current && !ref.current.contains(e.target)) {
-            if (window.confirm('The change will be lost. Are you sure you want to close it?')) {
-               setIsEdit(false);
-            }
-         }
+   const [isEdit, setIsEdit, editRef] = useDropdown(false, () => {
+      if (window.confirm('The change will be lost. Are you sure you want to close it?')) {
+         setIsEdit(false);
       }
-
-      if (isEdit) {
-         document.addEventListener('mousedown', clickOutside);
-      }
-
-      return () => {
-         document.removeEventListener('mousedown', clickOutside);
-      };
-   }, [isEdit]);
+   });
 
    function handleActiveTaskClick(e) {
       if (active) {
@@ -56,7 +42,7 @@ const Task = ({ task, active }) => {
             <EditTask
                task={task}
                cancel={handleCancelClick}
-               ref={ref}
+               ref={editRef}
             /> :
             <article
                className={`${styles.Task} ${active && styles.active}`}

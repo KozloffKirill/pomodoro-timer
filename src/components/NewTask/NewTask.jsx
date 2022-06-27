@@ -1,26 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import styles from "./NewTask.module.css";
 import AddTask from "../AddTask/AddTask";
+import useDropdown from "../../hooks/useDropdown";
 
 const NewTask = () => {
-   const [isAdd, setIsAdd] = useState(false);
-
-   const ref = useRef(null);
-   useEffect(() => {
-      function clickOutside(e) {
-         if (ref.current && !ref.current.contains(e.target)) {
-            setIsAdd(false);
-         }
-      }
-
-      if (isAdd) {
-         document.addEventListener('mousedown', clickOutside);
-      }
-
-      return () => {
-         document.removeEventListener('mousedown', clickOutside);
-      };
-   }, [isAdd]);
+   const [isAdd, setIsAdd, addRef] = useDropdown(false, () => setIsAdd(false));
 
    function handleAddTaskClick(e) {
       setIsAdd(true);
@@ -34,7 +18,7 @@ const NewTask = () => {
       <div className={styles.NewTask}>
          {isAdd ?
             <AddTask
-               ref={ref}
+               ref={addRef}
                cancel={handleCancelClick}
             /> :
             <button

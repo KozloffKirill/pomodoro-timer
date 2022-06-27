@@ -1,29 +1,14 @@
-import React, { useContext, useState, useRef, useEffect } from "react";
+import React, { useContext } from "react";
 import styles from "./TasksMenu.module.css";
 import dots from "../../assets/img/three-dots-icon.svg";
 import { TasksContext } from "../../contexts/TasksContext";
 import trash from "../../assets/img/trash-icon.svg";
+import useDropdown from "../../hooks/useDropdown";
 
 const TasksMenu = () => {
    const { clearAllTasks, clearCompletedTasks } = useContext(TasksContext);
 
-   const [isOpen, setIsOpen] = useState(false); // dropdown
-   const dropdownRef = useRef(null); // for closing dropdown on click outside
-   useEffect(() => {
-      function clickOutside(e) {
-         if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-            setIsOpen(false)
-         }
-      }
-
-      if (isOpen) {
-         document.addEventListener('mousedown', clickOutside);
-      }
-
-      return () => {
-         document.removeEventListener('mousedown', clickOutside);
-      };
-   }, [isOpen]);
+   const [isOpen, setIsOpen, dropdownRef] = useDropdown(false, () => setIsOpen(false));
 
    function handleOpenDropdownClick(e) {
       setIsOpen(!isOpen);

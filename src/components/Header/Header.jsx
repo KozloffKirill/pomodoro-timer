@@ -1,24 +1,29 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { PomodoroContext } from "../../contexts/PomodoroContext";
 import Mode from "../../models/mode";
 import PomodoroSettings from "../PomodoroSettings/PomodoroSettings";
 import styles from "./Header.module.css"
 import logo from "../../assets/img/logo.svg";
 import setting from "../../assets/img/settings-icon.svg";
+import useModalState from "../../hooks/useModalState";
 
 const Header = ({ text }) => {
    const { mode } = useContext(PomodoroContext);
-   const [isOpen, setIsOpen] = useState(false);
+   const [isOpen, onOpen, onClose] = useModalState(false);
 
    function handleSettingClick(e) {
-      setIsOpen(true);
+      onOpen();
+   }
+
+   function handleOnClose(e) {
+      onClose()
    }
 
    return (
       <>
          {isOpen &&
             <PomodoroSettings
-               onClose={() => setIsOpen(false)}
+               onClose={handleOnClose}
             />
          }
          <header className={`${styles.Header} ${mode === Mode.shortBreak && styles.shortBreakTheme} ${mode === Mode.longBreak && styles.longBreakTheme}`}>
